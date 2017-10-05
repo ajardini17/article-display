@@ -1,12 +1,13 @@
 import axios from 'axios';
 
 const topicsData = () => {
-  const topics = [];
+  let topics = [];
   let fetched = false;
   if(!fetched){
     fetched = true;
     fetchTopicData()
     .then(response => {
+      console.log(response.data, 'TOPICS DATA, controller')
       topics = response.data;
     })
     .catch(err => {})
@@ -22,7 +23,7 @@ const topicsData = () => {
 const fetchTopicData = () => {
   return axios.get('***REMOVED***topics.json');
 }
-fetchTopicData();
+//topicsData();
 
 module.exports = {
   getAllTopics: (req, res) => {

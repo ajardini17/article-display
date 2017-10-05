@@ -1,6 +1,6 @@
 export default (state = {totalArticles: [], articleInformation: {}}, action) => {
   switch (action.type) {
-    case "TOTAL_ARTICLES": {
+    case "SET_ALL_ARTICLES": {
       return Object.assign({}, state, {
         totalArticles: action.payload
       })

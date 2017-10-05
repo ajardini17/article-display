@@ -4,3 +4,10 @@ export const toggleTopic = topic => {
     payload: topic
   }
 }
+
+export const setTopics = topics => {
+  return {
+    type: 'SET_TOPICS',
+    payload: topics
+  }
+}

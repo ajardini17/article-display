@@ -1,7 +1,8 @@
 import Express from 'express';
 import path from 'path';
-import router from './Routes/routes.js';
+import router from './Routes/Routes.js';
 import parser from 'body-parser';
+//import {renderFullPage, handleRender} from './ServerSideRender.js';
 
 
 const app = Express();

@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import FollowedTopicReducer from './topicsReducers/FollowedTopicsReducer.jsx';
+import TopicReducer from './TopicsReducers/TopicsReducer.jsx';
 import ArticlesReducer from './ArticlesReducers/ArticlesReducer.jsx';
 
 export const reducers = combineReducers({
-  followedTopics: FollowedTopicReducer, 
+  topics: TopicReducer, 
   articles: ArticlesReducer
 });

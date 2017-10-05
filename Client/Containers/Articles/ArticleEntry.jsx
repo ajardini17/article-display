@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class ArticleEntry extends Component {
   constructor(props){
     super(props);
-    state = {
+    this.state = {
       article: this.props.article
     }
   }
@@ -12,9 +12,10 @@ class ArticleEntry extends Component {
   }
   render() {
     let article = this.state.article;
+    //console.log(article, 'inside article entry')
     return (
       <div>
-          <div>
+          <div onClick={(e) => this.props.handleArticleRequest(e, this.props.article)}>
               {article.title ? article.title : null}
             <div>
               {article.attribution.displayName ? article.attribution.displayName : null}
@@ -23,7 +24,7 @@ class ArticleEntry extends Component {
               {article.summary ? article.summary : null}
             </div>
             <div>
-              {article.createdAt ? article.createdAt : null} {article.likesCount ? article.likesCount : null}
+              {article.createdAt ? this.props.timeHandler(Date.parse(article.createdAt)) : null} {article.likesCount ? article.likesCount : null}
             </div>
           </div>
       </div>
