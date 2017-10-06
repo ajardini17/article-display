@@ -62,7 +62,9 @@ class Articles extends Component {
         <div className='container'>
           <div className='row'>
           {this.props.articles ? this.props.articles.map((article, index) => {
+
             return (
+              
             article.topics.some(topicId => this.props.totalTopics.hasOwnProperty(topicId.id) && this.props.totalTopics[topicId.id].followed) 
             
             ?
