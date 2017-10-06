@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import TopicReducer from './TopicsReducers/TopicsReducer.jsx';
-import ArticlesReducer from './ArticlesReducers/ArticlesReducer.jsx';
+import TopicReducer from './TopicsReducer.jsx';
+import ArticlesReducer from './ArticlesReducer.jsx';
 
 export const reducers = combineReducers({
   topics: TopicReducer, 

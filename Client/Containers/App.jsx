@@ -1,15 +1,34 @@
 import React, { Component } from 'react';
-import {Route, BrowserRouter} from 'react-router-dom'
+import { Route, BrowserRouter } from 'react-router-dom'
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { requestTopics } from '../Actions/TopicsAction.jsx';
+import { requestArticles } from '../Actions/ArticlesAction.jsx';
 import Articles from './Articles/Articles.jsx';
 import TopicsPage from './Topics/TopicsPage.jsx';
-
 import ArticleDetails from '../Components/ArticleDetails/ArticleDetails.jsx';
 
 
-export default class App extends React.Component {
+const mapStateToProps = state => {
+  return {
+    articles: state.articles.totalArticles,
+    totalTopics: state.topics.totalTopics
+  }
+}
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ requestArticles, requestTopics}, dispatch)
+}
+
+
+class App extends React.Component {
   constructor(){
     super()
   }
+  componentWillMount() {
+   this.props.requestArticles();
+   this.props.requestTopics();
+  }
+
   render(){
     return (
       <BrowserRouter>
@@ -24,3 +43,4 @@ export default class App extends React.Component {
   }
 }
 
+export default connect(mapStateToProps, mapDispatchToProps)(App);

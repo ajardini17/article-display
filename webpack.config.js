@@ -4,7 +4,7 @@ const SRC_DIR = path.resolve(__dirname, 'Client');
 const BUILD_DIR = path.resolve(__dirname, 'Static');
 
 module.exports = {
-  entry: path.resolve(SRC_DIR, 'index.jsx'),
+  entry: ['babel-polyfill', path.resolve(SRC_DIR, 'index.jsx')],
   output: {
     filename: 'bundle.js',
     path: BUILD_DIR

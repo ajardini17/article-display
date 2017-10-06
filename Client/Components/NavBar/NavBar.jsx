@@ -5,8 +5,8 @@ class NavBar extends Component {
   render() {
     return (
     <div className = 'navbar-top'>
-      <Link to='/topics'><span className='navbar-topic'> Topics </span></Link>
-        <Link to ='/'>NavBar</Link>
+      <Link to='/topics' className='navbar-topic'><span > Topics </span></Link>
+      <Link to ='/'>NavBar</Link>
     </div>
     );
   }

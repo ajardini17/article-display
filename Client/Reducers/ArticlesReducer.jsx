@@ -5,9 +5,9 @@ export default (state = {totalArticles: [], articleInformation: {}}, action) => 
         totalArticles: action.payload
       })
     }
-    case "ADD_ARTICLE": {
+    case "ADD_ARTICLE_INFORMATION": {
       return Object.assign({}, state, {
-        articleInformation: action.payload
+        articleInformation: Object.assign({}, state.articleInformation, action.payload)
       })
     }
     default: {

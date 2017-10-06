@@ -11,3 +11,9 @@ export const setTopics = topics => {
     payload: topics
   }
 }
+
+export const requestTopics = () => {
+  return {
+    type: 'TOPICS_FETCH_REQUESTED'
+  }
+}

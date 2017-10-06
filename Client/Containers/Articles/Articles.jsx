@@ -4,20 +4,21 @@ import { bindActionCreators } from 'redux';
 import axios from 'axios';
 import moment from 'moment';
 
-import {addArticle, setAllArticles} from '../../Actions/Articles/ArticlesAction.jsx';
-import { setTopics } from '../../Actions/Topics/TopicsAction.jsx';
+import {addArticle, setAllArticles, requestArticles} from '../../Actions/ArticlesAction.jsx';
+import { setTopics, requestTopics } from '../../Actions/TopicsAction.jsx';
 import NavBar from '../../Components/NavBar/NavBar.jsx';
 import ArticleEntry from './ArticleEntry.jsx';
 
 const mapStateToProps = state => {
   return {
     articles: state.articles.totalArticles,
-    articleInformation: state.articles.articleInformation
+    articleInformation: state.articles.articleInformation,
+    totalTopics: state.topics.totalTopics
   }
 }
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({addArticle, setAllArticles, setTopics}, dispatch)
+  return bindActionCreators({addArticle, setAllArticles, setTopics, requestTopics, requestArticles}, dispatch)
 }
 
 
@@ -27,18 +28,6 @@ class Articles extends Component {
     this.handleArticleRequest = this.handleArticleRequest.bind(this);
     this.fetchArticleInformation = this.fetchArticleInformation.bind(this);
     this.timeHandler = this.timeHandler.bind(this);
-  }
-
-  componentDidMount() {
-    Promise.all([axios.get('***REMOVED***articles.json'), axios.get('***REMOVED***topics.json')])
-    .then(reply => {
-      this.props.setAllArticles(reply[0].data.data)
-      const topics = reply[1].data.data.map(topic => Object.assign({}, topic, {followed: true}));
-      this.props.setTopics(topics)
-    }) 
-  }
-  componentWillReceiveProps(nextProps) {
-    
   }
 
   handleArticleRequest(e, article){
@@ -55,18 +44,30 @@ class Articles extends Component {
     return moment().format('MMM Do')
   }
   render() {
-    console.log(this.props.articles, 'ARTICLES')
+
     return (
       <div>
         <NavBar/>
         <div className='container'>
           <div className='row'>
-          {this.props.articles ? this.props.articles.map((article, index) => (
-            <div className='col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 article-entry col-xl-offset-3 col-xl-6'>
-            <ArticleEntry handleArticleRequest={this.handleArticleRequest} timeHandler={this.timeHandler} article={article} key={index}/>    
-            </div>          
-          ))
+          {this.props.articles ? this.props.articles.map((article, index) => {
+            return (
+            article.topics.some(topicId => this.props.totalTopics.hasOwnProperty(topicId.id) && this.props.totalTopics[topicId.id].followed) 
+            
+            ?
+            
+            <div className='col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 article-entry col-xl-offset-2 col-xl-8'>
+              <ArticleEntry handleArticleRequest={this.handleArticleRequest} timeHandler={this.timeHandler} article={article} key={index}/>    
+            </div>
+            
+            :
+            
+            null
+            )  
+          })
+          
           :
+
           null
           }
           </div>
