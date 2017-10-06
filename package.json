@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha Tests/test.js",
+    "build": "babel Client/Actions -o Tests/Actions.js --exec babel-node --presets  es2015,stage-2 &  babel Client/Reducers/TopicsReducer.jsx -o Tests/Reducers.js --presets  es2015,stage-2",
     "start": "nodemon Server/server.js --exec babel-node --presets  es2015,stage-2 & webpack -w"
   },
   "keywords": [],
@@ -17,8 +18,11 @@
     "babel-polyfill": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "chai": "^4.1.2",
     "express": "^4.16.1",
+    "mocha": "^4.0.1",
     "moment": "^2.18.1",
+    "path": "^0.12.7",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",

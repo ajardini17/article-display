@@ -8,6 +8,7 @@ import {addArticle, setAllArticles, requestArticles} from '../../Actions/Article
 import { setTopics, requestTopics } from '../../Actions/TopicsAction.jsx';
 import NavBar from '../../Components/NavBar/NavBar.jsx';
 import ArticleEntry from './ArticleEntry.jsx';
+import ArticleDetailsPage from './ArticleDetailsPage.jsx';
 
 const mapStateToProps = state => {
   return {
@@ -28,6 +29,10 @@ class Articles extends Component {
     this.handleArticleRequest = this.handleArticleRequest.bind(this);
     this.fetchArticleInformation = this.fetchArticleInformation.bind(this);
     this.timeHandler = this.timeHandler.bind(this);
+    this.state = {
+      fake: false,
+      article: []
+    }
   }
 
   handleArticleRequest(e, article){
@@ -35,7 +40,7 @@ class Articles extends Component {
     // if(!info.hasOwnProperty(article.id)){
 
     // }
-    console.log('clicked', article)
+    this.setState({fake: true, article: article})
   }
   fetchArticleInformation(id){
     axios.get()
@@ -48,6 +53,12 @@ class Articles extends Component {
     return (
       <div>
         <NavBar/>
+        {this.state.fake ?
+        <ArticleDetailsPage selectedArticle={this.state.article}/>
+        
+        :
+
+        
         <div className='container'>
           <div className='row'>
           {this.props.articles ? this.props.articles.map((article, index) => {
@@ -56,7 +67,7 @@ class Articles extends Component {
             
             ?
             
-            <div className='col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-8 article-entry col-xl-offset-2 col-xl-8'>
+            <div className='col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 article-entry col-xl-offset-3 col-xl-6'>
               <ArticleEntry handleArticleRequest={this.handleArticleRequest} timeHandler={this.timeHandler} article={article} key={index}/>    
             </div>
             
@@ -72,6 +83,7 @@ class Articles extends Component {
           }
           </div>
           </div>
+        }
       </div>
     );
   }

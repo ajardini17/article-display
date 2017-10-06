@@ -21,16 +21,7 @@ module.exports = {
   },
   fetchTopics: () => {
     return axios.get('***REMOVED***topics.json')
-      .then(response => {
-        const topics = response.data.data;
-
-        return topics.reduce((acc, cur) => {
-          acc[cur.id] = Object.assign({}, cur, {followed: true});
-          delete acc[cur.id].id;
-          return acc
-        }, {})
-
-      })
+      .then(response => response.data.data)
       .catch(e => e)
   }
 

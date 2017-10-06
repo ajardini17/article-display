@@ -18,7 +18,12 @@ export default (state = {totalTopics: {}}, action) => {
        * 
        * Fast lookup of the articles that have followed topics
        */
-      return Object.assign({}, state, {totalTopics: action.payload})
+      let sculptedTopics = action.payload.reduce((acc, cur) => {
+        acc[cur.id] = Object.assign({}, cur, {followed: true});
+        delete acc[cur.id].id;
+        return acc
+      }, {})
+      return Object.assign({}, state, {totalTopics: sculptedTopics})
     }
     default: {
       return state

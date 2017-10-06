@@ -6,7 +6,7 @@ import { requestTopics } from '../Actions/TopicsAction.jsx';
 import { requestArticles } from '../Actions/ArticlesAction.jsx';
 import Articles from './Articles/Articles.jsx';
 import TopicsPage from './Topics/TopicsPage.jsx';
-import ArticleDetails from '../Components/ArticleDetails/ArticleDetails.jsx';
+import ArticleDetails from './Articles/ArticleDetailsPage.jsx';
 
 
 const mapStateToProps = state => {

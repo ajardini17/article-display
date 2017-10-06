@@ -36,22 +36,22 @@ class TopicsPage extends Component {
           <div className='row article-entry'>
             
              {Object.keys(totalTopics).sort((a,b) => totalTopics[a].name > totalTopics[b].name).map((topicID, index) => (
-              <div className='topic-entry-first-child'>
-               <div className='col-xs-offset-1 col-xs-8 col-sm-offset-1 col-sm-8 topic-entry'>
+              <div >
+               <div className='col-xs-offset-0 col-xs-8 col-sm-offset-1 col-sm-8 topic-entry topic-entry-container'>
                 {totalTopics[topicID].name}
                </div>
-               <div className='col-xs-3 col-sm-2' onClick={() => {this.handleClick(topicID)}}>
+               <div className='col-xs-4 col-sm-2' onClick={() => {this.handleClick(topicID)}}>
                  
                  {
                    totalTopics[topicID].followed
                  ?
-                 <div className='followed'>
+                 <div className='followed followButton-container followButton-responsive'>
                    <button className='btn btn-danger btn-xs btn-block'>
                     <span className='glyphicon glyphicon-ok glyph-size'></span><span>Following</span>
                     </button>
                 </div>
                  :
-                 <div className='notFollowed'>
+                 <div className='followButton-container followButton-responsive'>
                   <button className='btn btn-outline-primary btn-block btn-xs'>
                   <span className='glyphicon glyphicon-plus glyph-size'></span><span>Follow</span>
                   </button>

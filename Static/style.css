@@ -10,28 +10,35 @@ a, a:visited, a:hover, a:active a.hover:hover{
   text-decoration: none;
 }
 .navbar-top {
-  background-color: #b5103a;
+  box-sizing: inherit;
+  background: #B51039;
+  font-family: serifs;
   display: flex;
-  justify-content: center;
+  align-content: center;
   position: fixed;
   width: 100%;
   text-align: center;
   z-index: 5;
   margin: 0;
-  padding: 0;
+  padding: 5px;
+  color: #FFF
 }
 
-.navbar-topic {
-  float: left;
-  text-align: left;
-  width: 95%;
+.navbar-topics {
+  margin-left: 5%;
+  order: -1;
+}
+
+.navbar-home {
+  order: 2;
+  margin: 0 auto;
 }
 
 .article-entry {
   font-family: "Crimson Text", serif;
   border: 1px solid rgba(64, 56, 58, .1);
   margin-bottom: 10px;
-  padding: 2% 4%;
+  padding: 2% 6%;
 }
 .article-entry:first-child {
   margin-top: 5%;
@@ -51,6 +58,7 @@ a, a:visited, a:hover, a:active a.hover:hover{
 .article-image-container, .article-second-block{
   margin-bottom: 10px;
 }
+
 .article-date {
   font-size: 14px;
 }
@@ -82,7 +90,9 @@ a, a:visited, a:hover, a:active a.hover:hover{
   padding: 2% 2%;
   margin-bottom: 10px;
 }
-
+.topic-entry-container{
+  margin-bottom: 3px;
+}
 .topic-entry{
   border-top: 1px solid rgba(104, 108, 107, 0.20);
 }
@@ -97,20 +107,22 @@ a, a:visited, a:hover, a:active a.hover:hover{
   color: #b5103a;
 }
 
-.followed {
+.followButton-container{
   cursor: pointer;
-  color: #b5103a;
-  font-size: 12px;
-  background: rgba(255,255,255,.5);
+  font-size: 12px;  
   border-radius: 5%;
-  max-width: 80%;
 }
-.notFollowed {
-  cursor: pointer;
-  font-size: 12px;
-  max-width: 80%;
-  border-radius: 5%;
-
+.followButton-responsive{
+  max-width: 86%;
+}
+@media screen and (max-width: 600px){
+  .followButton-responsive {
+    max-width: 100%;
+  }
+}
+.followed {
+  color: #b5103a;
+  background: rgba(255,255,255,.5);
 }
 
 
