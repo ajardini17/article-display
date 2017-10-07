@@ -1,13 +1,14 @@
 import axios from 'axios';
+import { articleURL, topicsURL, selectedArticleURL } from './fetchURLs.jsx';
 
 module.exports = {
   fetchArticles: () => {
-   return axios.get('***REMOVED***articles.json') 
+   return axios.get(articleURL) 
       .then(response => response.data.data)
       .catch(e => e)
   },
   fetchSelectedArticle: (id) => {
-    return axios.get(`***REMOVED***articles/${id}.json`)
+    return axios.get(selectedArticleURL(id))
       .then(response => {
         const articleInfo = response.data.data[0];
 
@@ -20,7 +21,7 @@ module.exports = {
       .catch(e => e)
   },
   fetchTopics: () => {
-    return axios.get('***REMOVED***topics.json')
+    return axios.get(topicsURL)
       .then(response => response.data.data)
       .catch(e => e)
   }
