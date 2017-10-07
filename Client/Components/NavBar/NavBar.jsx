@@ -6,7 +6,7 @@ class NavBar extends Component {
     return (
     <div className = 'navbar-top'>
       <Link to='/topics' className='navbar-topics'><span > Topics </span></Link>
-      <Link to ='/' className='navbar-home'>MedFeed</Link>
+      <Link to ='/' className='navbar-home'>Home</Link>
     </div>
     );
   }
