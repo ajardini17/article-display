@@ -1,10 +1,11 @@
-import axios from 'axios';
-import { articleURL, topicsURL, selectedArticleURL } from './fetchURLs.jsx';
+const axios = require('axios');
+const { allArticlesURL, allTopicsURL, selectedArticleURL } = require('./API.js');
 
 module.exports = {
-  fetchArticles: () => {
-   return axios.get('/api/allArticles') 
-      .then(response => response.data)
+  fetchArticles: (req, res) => {
+   return axios.get(allArticlesURL) 
+      .then(response => response.data.data)
+      .then(data => res.send(data))
       .catch(e => e)
   },
   fetchSelectedArticle: (id) => {
@@ -20,9 +21,10 @@ module.exports = {
       })
       .catch(e => e)
   },
-  fetchTopics: () => {
-    return axios.get('/api/allTopics')
-      .then(response => response.data)
+  fetchTopics: (req, res) => {
+    return axios.get(allTopicsURL)
+      .then(response => response.data.data)
+      .then(data => res.send(data))
       .catch(e => e)
   }
 
